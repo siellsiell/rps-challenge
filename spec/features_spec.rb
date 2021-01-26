@@ -40,6 +40,7 @@ end
 
 feature 'Can choose rock, paper or scissors and find out game outcome' do
 
+  # TODO test scenarios where bot wins
     #:username: :user3, :user => :paper, :bot => :rock, :winnner => :user3,
   ([ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
   [:username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ])

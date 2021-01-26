@@ -24,7 +24,7 @@ class RockPaperScissors < Sinatra::Base
 
   get '/end' do
     username = session.delete(:name)
-    erb :end, :locals => { 
+    erb :end, :locals => {
       :username => username,
       :user_choice => session.delete(:choice),
       :server_choice => Game.random_choice,

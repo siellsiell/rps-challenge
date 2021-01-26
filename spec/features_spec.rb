@@ -40,19 +40,24 @@ end
 
 feature 'Can choose rock, paper or scissors and find out game outcome' do
 
-  scenario "User chooses rock, server chooses scissors, user wins" do
-    allow(Game).to receive(:random_choice).and_return(:scissors)
-    player = "simo"
-    visit '/'
-    fill_in('name', with: player)
-    click_on("Play")
-    click_on("rock")
-    expect(page).to have_content(
-      /#{player} chose rock./
-    )
-    expect(page).to have_content(
-      /Bot chose scissors./
-    )
-    expect(page).to have_content(/#{player} wins!/)
+    #:username: :user3, :user => :paper, :bot => :rock, :winnner => :user3,
+  ([ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
+  [:username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ])
+    .each do |params|
+    scenario "#{params[:username]} chooses #{params[:user]}, server chooses #{params[:bot]}, winner is #{params[:winner]}" do
+      allow(Game).to receive(:random_choice).and_return(params[:bot])
+      player = params[:username]
+      visit '/'
+      fill_in('name', with: player)
+      click_on("Play")
+      click_on(params[:user])
+      expect(page).to have_content(
+        /#{player} chose #{params[:user]}./
+      )
+      expect(page).to have_content(
+        /Bot chose #{params[:bot]}./
+      )
+      expect(page).to have_content(/#{player} wins!/)
+    end
   end
 end

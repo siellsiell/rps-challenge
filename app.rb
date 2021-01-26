@@ -28,7 +28,7 @@ class RockPaperScissors < Sinatra::Base
       :username => username,
       :user_choice => session.delete(:choice),
       :server_choice => Game.random_choice,
-      :winner_message => "#{username} wins!"
+      :winner => "#{username}"
     }
   end
 end

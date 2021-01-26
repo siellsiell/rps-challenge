@@ -53,6 +53,6 @@ feature 'Can choose rock, paper or scissors and find out game outcome' do
     expect(page).to have_content(
       /Bot chose scissors./
     )
-    #expect(page).to have_content(/#{player} wins!/)
+    expect(page).to have_content(/#{player} wins!/)
   end
 end

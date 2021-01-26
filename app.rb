@@ -23,11 +23,12 @@ class RockPaperScissors < Sinatra::Base
   end
 
   get '/end' do
+    username = session.delete(:name)
     erb :end, :locals => { 
-      :username => session.delete(:name),
+      :username => username,
       :user_choice => session.delete(:choice),
       :server_choice => Game.random_choice,
-      :winner_message => "Bot wins!"
+      :winner_message => "#{username} wins!"
     }
   end
 end

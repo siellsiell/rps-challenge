@@ -40,7 +40,6 @@ end
 
 feature 'Can choose rock, paper or scissors and find out game outcome' do
 
-  # TODO test scenarios where bot wins
   (
     [ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
     [ :username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ] +
@@ -66,6 +65,27 @@ feature 'Can choose rock, paper or scissors and find out game outcome' do
         /Bot chose #{params[:bot]}./
       )
       expect(page).to have_content(/#{params[:winner]} wins!/)
+    end
+  end
+
+
+  (
+    [ :rock, :paper, :scissors] 
+  ).each do |choice|
+    scenario "both choose #{choice}, game ends in draw" do
+      allow(Game).to receive(:bot_choice).and_return(choice)
+      player = "intrepid koala"
+      visit '/'
+      fill_in('name', with: player)
+      click_on("Play")
+      click_on(choice)
+      expect(page).to have_content(
+        /#{player} chose #{choice}./
+      )
+      expect(page).to have_content(
+        /Bot chose #{choice}./
+      )
+      expect(page).to have_content(/It's a draw./)
     end
   end
 end

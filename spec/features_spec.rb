@@ -43,10 +43,16 @@ feature 'Can choose rock, paper or scissors and find out game outcome' do
   # TODO test scenarios where bot wins
   (
     [ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
-    [:username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ] +
-    [ :username => :user3, :user => :paper, :bot => :rock, :winner => :user3 ]
+    [ :username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ] +
+    [ :username => :user3, :user => :paper, :bot => :rock, :winner => :user3 ] +
+
+    [ :username => :user1, :user => :scissors, :bot => :rock, :winner => :Bot ] +
+    [ :username => :user2, :user => :paper, :bot => :scissors, :winner => :Bot ] +
+    [ :username => :user3, :user => :rock, :bot => :paper, :winner => :Bot ]
   ).each do |params|
-    scenario "#{params[:username]} chooses #{params[:user]}, server chooses #{params[:bot]}, winner is #{params[:winner]}" do
+    scenario %{
+        #{params[:username]} chooses #{params[:user]}, server chooses #{params[:bot]}, winner is #{params[:winner]}
+      } do
       allow(Game).to receive(:random_choice).and_return(params[:bot])
       player = params[:username]
       visit '/'

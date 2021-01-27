@@ -24,11 +24,15 @@ class RockPaperScissors < Sinatra::Base
 
   get '/end' do
     username = session.delete(:name)
+    user_choice = session.delete(:choice).to_sym
+    server_choice = Game.random_choice
+    puts "Server choice: #{server_choice} User choice #{user_choice}"
+    winner = Game.wins_against?(user_choice, server_choice) ? username : :Bot
     erb :end, :locals => {
       :username => username,
-      :user_choice => session.delete(:choice),
-      :server_choice => Game.random_choice,
-      :winner => "#{username}"
+      :user_choice => user_choice,
+      :server_choice => server_choice,
+      :winner => winner
     }
   end
 end

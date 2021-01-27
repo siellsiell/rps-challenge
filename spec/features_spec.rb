@@ -41,10 +41,11 @@ end
 feature 'Can choose rock, paper or scissors and find out game outcome' do
 
   # TODO test scenarios where bot wins
-    #:username: :user3, :user => :paper, :bot => :rock, :winnner => :user3,
-  ([ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
-  [:username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ])
-    .each do |params|
+  (
+    [ :username => :user1, :user => :rock, :bot => :scissors, :winner => :user1 ] +
+    [:username => :user2, :user => :scissors, :bot => :paper, :winner => :user2 ] +
+    [ :username => :user3, :user => :paper, :bot => :rock, :winner => :user3 ]
+  ).each do |params|
     scenario "#{params[:username]} chooses #{params[:user]}, server chooses #{params[:bot]}, winner is #{params[:winner]}" do
       allow(Game).to receive(:random_choice).and_return(params[:bot])
       player = params[:username]
@@ -58,7 +59,7 @@ feature 'Can choose rock, paper or scissors and find out game outcome' do
       expect(page).to have_content(
         /Bot chose #{params[:bot]}./
       )
-      expect(page).to have_content(/#{player} wins!/)
+      expect(page).to have_content(/#{params[:winner]} wins!/)
     end
   end
 end

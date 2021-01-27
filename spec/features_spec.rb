@@ -53,7 +53,7 @@ feature 'Can choose rock, paper or scissors and find out game outcome' do
     scenario %{
         #{params[:username]} chooses #{params[:user]}, server chooses #{params[:bot]}, winner is #{params[:winner]}
       } do
-      allow(Game).to receive(:random_choice).and_return(params[:bot])
+      allow(Game).to receive(:bot_choice).and_return(params[:bot])
       player = params[:username]
       visit '/'
       fill_in('name', with: player)

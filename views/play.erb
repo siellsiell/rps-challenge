@@ -11,9 +11,9 @@
 
   <form action ="/choose" method="post">
     <div>
-      <input type="submit" name="choice" value="rock">
-      <input type="submit" name="choice" value="paper">
-      <input type="submit" name="choice" value="scissors">
+      <% choices.each do |value| %>
+        <input type="submit" name="choice" value=<%= value %>>
+      <% end %>
     </div>
   </form>
 </body>

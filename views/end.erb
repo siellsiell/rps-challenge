@@ -1,2 +1,6 @@
-<p><%= username %> chose <%= user_choice %>. Bot chose <%= server_choice %>.</p>
-<p><%= winner%> wins!</p>
+<p><%= username %> chose <%= user_choice %>. Bot chose <%= server_choice %>.</p>	
+<% if winner.nil? %>	
+  <p>It's a draw.</p>	
+<% else  %>	
+  <p><%= winner%> wins!</p>	
+<% end %>

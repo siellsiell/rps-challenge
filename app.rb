@@ -26,7 +26,7 @@ class RockPaperScissors < Sinatra::Base
   end
 
   get '/end' do
-    username = session.delete(:username)
+    username = session[:username]
     user_choice = session.delete(:user_choice).to_sym
     result = Game.play(username, user_choice)
     erb :end, :locals => {

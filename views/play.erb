@@ -1,19 +1,9 @@
-<!doctype html>
+<h1>Hi <%= name %>, let's play!</h1>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Rock Paper Scissors</title>
-</head>
-<body>
-  <h1>Hi <%= name %>, let's play!</h1>
-
-  <form action ="/choose" method="post">
-    <div>
-      <% choices.each do |value| %>
-        <input type="submit" name="choice" value=<%= value %>>
-      <% end %>
-    </div>
-  </form>
-</body>
+<form action ="/choose" method="post">
+  <div>
+    <% choices.each do |value| %>
+      <input type="submit" name="choice" value=<%= value %>>
+    <% end %>
+  </div>
+</form>

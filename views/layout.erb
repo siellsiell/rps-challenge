@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background-color: #EFD6AC;
+  }
+
+  .play-button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #C44900;
+    border: none;
+    color: #EFD6AC;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .play-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .play-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .play-button:hover span {
+    padding-right: 25px;
+  }
+
+  .play-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .input-text, .input-text:focus {
+    border: none;
+    background: transparent;
+    height: auto;
+    color: #C44900;
+    text-align: center;
+  }
+
+  //.input-text:focus {
+  //  border: none;
+  //  outline: none;
+  //  outline-width: 0;
+  //  border-bottom: 2px solid #CCC;
+  //}
+  </style>
+
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <%= yield %>
+</body>

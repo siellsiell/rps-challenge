@@ -1,17 +1,2 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Rock Paper Scissors</title>
-</head>
-<body>
-
-  <p><%= username %> chose <%= user_choice %>. Bot chose <%= server_choice %>.</p>
-  <% if winner.nil? %>
-    <p>It's a draw.</p>
-  <% else  %>
-    <p><%= winner%> wins!</p>
-  <% end %>
-</body>
+<p><%= username %> chose <%= user_choice %>. Bot chose <%= server_choice %>.</p>
+<p><%= winner%> wins!</p>
